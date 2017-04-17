@@ -18,7 +18,7 @@ public class PeopleRepository {
     public List<Person> listPeople(String search){
         return jdbcTemplate.query("SELECT * from person " +
                 "WHERE lower(firstname) like lower(?) " +
-                "OR lower(lastname) like lower(?) LIMIT 25",
+                "OR lower(lastname) like lower(?) LIMIT 200",
                 new Object[]{"%" + search + "%","%" + search + "%"},
         (resultSet,row) -> new Person(
                 resultSet.getInt("personid"),
