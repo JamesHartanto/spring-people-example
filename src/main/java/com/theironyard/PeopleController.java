@@ -40,12 +40,13 @@ public class PeopleController {
     }
 
     @GetMapping("/sortFirstName")
-    public String sortFirstName(List<Person> sortList){
+    public String sortFirstName(Model model, ArrayList<Person> sortList){
         List<String> name = new ArrayList<>();
         for (int x = 0; x < sortList.size(); x = x + 1){
             name.add(sortList.get(x).getFirstName());
         }
         java.util.Collections.sort(name);
+        model.addAttribute("sortFirstName",name);
         return "redirect:/";
     }
 
@@ -55,7 +56,7 @@ public class PeopleController {
         for (int x = 0; x < sortList.size(); x = x + 1){
             name.add(sortList.get(x).getLastName());
         }
-//        java.util.Collections.sort(name);
+        java.util.Collections.sort(name);
         return "redirect:/";
     }
 
